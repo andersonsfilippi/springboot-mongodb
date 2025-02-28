@@ -1,3 +1,11 @@
 spring:
     application:
         name: springboot-mongodb
+    data:
+        mongodb:
+            host: "172.18.0.2"
+            port: 27017
+            database: "workshop_mongo"
+            username: "root"
+            password: "example"
+            authentication-database: admin
