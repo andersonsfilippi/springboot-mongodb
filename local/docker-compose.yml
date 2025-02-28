@@ -1,0 +1,16 @@
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: unless-stopped
+    container_name: mongodb
+    hostname: mongodb
+    volumes:
+      - mongodb-data:/data/db
+      - mongodb-log:/var/log/mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+volumes:
+  mongodb-data:
+  mongodb-log:
