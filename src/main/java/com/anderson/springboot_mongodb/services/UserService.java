@@ -9,5 +9,6 @@ public interface UserService {
 
     List<User>findAll();
     List<UserDTO>findByName(String name);
+    UserDTO findById(String id);
 
 }

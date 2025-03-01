@@ -1,4 +1,4 @@
-package com.anderson.springboot_mongodb.resources;
+package com.anderson.springboot_mongodb.controller;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import com.anderson.springboot_mongodb.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
 
     private final UserService service;
 
-    public UserResource(final UserService service) {
+    public UserController(final UserService service) {
         this.service = service;
     }
 
@@ -27,9 +27,9 @@ public class UserResource {
         return ResponseEntity.ok().body(service.findAll());
     }
 
-    @GetMapping("/{name}")
-    public ResponseEntity<List<UserDTO>> findByName(@PathVariable(name = "name") String name) {
-        return ResponseEntity.ok().body(service.findByName(name));
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> findByName(@PathVariable String id) {
+        return ResponseEntity.ok().body(service.findById(id));
     }
 
 }
