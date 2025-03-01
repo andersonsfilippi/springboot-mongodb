@@ -39,7 +39,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void delete(String id) {
+        repository.deleteById(id);
+    }
+    
+    @Override
     public User fromDTO(UserDTO userDTO) {
         return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     }
+
 }
