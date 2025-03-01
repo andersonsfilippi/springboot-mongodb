@@ -42,10 +42,23 @@ public class UserServiceImpl implements UserService {
     public void delete(String id) {
         repository.deleteById(id);
     }
-    
+
     @Override
     public User fromDTO(UserDTO userDTO) {
         return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+    }
+
+    @Override
+    public User update(User user) {
+        User newObj = repository.findById(user.getId())
+                .orElseThrow(() -> new ObjectNotFoundException("User not found"));
+        updateData(newObj, user);
+        return repository.save(newObj);
+    }
+
+    private void updateData(User newObj, User obj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
     }
 
 }
