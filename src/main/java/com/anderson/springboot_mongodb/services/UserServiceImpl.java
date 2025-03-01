@@ -32,4 +32,14 @@ public class UserServiceImpl implements UserService {
         return repository.findById(id).map(UserDTO::new)
                 .orElseThrow(() -> new ObjectNotFoundException("User not found"));
     }
+
+    @Override
+    public User save(User obj) {
+        return repository.save(obj);
+    }
+
+    @Override
+    public User fromDTO(UserDTO userDTO) {
+        return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+    }
 }
